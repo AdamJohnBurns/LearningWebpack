@@ -1,4 +1,6 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   // entry point of bundler, where webpack starts building its dependency graph
@@ -67,5 +69,16 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+
+  // plugins
+  plugins: [
+    // cleans specified folders before each build
+    new CleanWebpackPlugin(['dist']),
+
+    // generates an index.html file with the above generated output
+    new HtmlWebpackPlugin({
+      title: 'Output Management'
+    })
+  ]
 };
