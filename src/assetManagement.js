@@ -3,7 +3,7 @@ import dataJson from './data.json';
 import dataXml from './data.xml';
 import dataCsv from './data.csv';
 
-import './css/style.css';
+import './css/assetManagement.css';
 
 var myImg = document.getElementById('my-image');
 myImg.src = TestImage;

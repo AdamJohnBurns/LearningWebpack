@@ -1,5 +1,6 @@
 # Learning Webpack
 
+Code based on the Webpack 3.4.1 getting started guide: https://webpack.js.org/guides/getting-started
 
 ## Node modules
 
@@ -10,4 +11,5 @@
 * html-webpack-plugin: Generates an index.html file with the correct bundles added, so we don't have to manually do it. Makes sure bundles are always accessible even if things are refactored.
 * style-loader: Used by webpack to write styles to the page via a <style> tag
 * webpack: Bundler used to combine all assets into a single dependency graph
+* webpack-dev-server: A simple web server with live reloading
 * xml-loader: Used by webpack to load XML files

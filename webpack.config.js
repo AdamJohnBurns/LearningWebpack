@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   // entry point of bundler, where webpack starts building its dependency graph
@@ -8,9 +9,9 @@ module.exports = {
 
   // we can have a single entry, or several
   entry: {
-    assetManagement: './src/assetManagement.js',
+    // assetManagement: './src/assetManagement.js',
 
-    print: './src/print.js',
+    // print: './src/print.js', // not needed as will be included in outputManagement
     outputManagement: './src/outputManagement.js'
   },
 
@@ -71,7 +72,7 @@ module.exports = {
     ]
   },
 
-  // plugins
+  // array of all enabled plugins
   plugins: [
     // cleans specified folders before each build
     new CleanWebpackPlugin(['dist']),
@@ -79,6 +80,22 @@ module.exports = {
     // generates an index.html file with the above generated output
     new HtmlWebpackPlugin({
       title: 'Output Management'
-    })
-  ]
+    }),
+
+    // enable webpacks built in HMR, must also be enabled for the dev server below
+    new webpack.HotModuleReplacementPlugin()
+  ],
+
+  // development tools - note shouldnt be used for production builds
+  devtool: 'inline-source-map',
+
+  // development server from webpack-dev-server with live reloading
+  devServer: {
+    // folder to serve, by default to localhost on an available port
+    contentBase: './dist',
+
+    // enable webpacks built in HMR (Hot Module Replacement), plugin must also be enabled above
+    hot: true
+  }
+
 };
